@@ -198,12 +198,12 @@ var MD5 = function (string) {
 
    	return temp.toLowerCase();
 }
-
-$( document ).ready(function() {
-$( "#pass" ).on("change keyup paste click", function() {
-  var password = $('#pass').val();
-  var passhash = MD5(password);
-  console.log(passhash);
-  $("#md5").val(passhash);
-});
-});
+function invokeCopy() {
+    document.execCommand('copy');
+}
+function modifyCopy(e) {
+    
+    e.clipboardData.setData('text/plain', MD5($('#pass').val()));
+    e.preventDefault();
+}
+document.addEventListener('copy', modifyCopy);

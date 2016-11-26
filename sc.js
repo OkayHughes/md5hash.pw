@@ -207,6 +207,13 @@ function modifyCopy(e) {
     var pass = document.getElementById('pass');
     e.clipboardData.setData('text/plain', MD5(pass.value));
     e.preventDefault();
+
+    // Display a notification that it was copied
+    var copied = document.getElementById('copied');
+    copied.className = 'show';
+    window.setTimeout(function() {
+        copied.className = '';
+    }, 1000);
 }
 
 document.addEventListener('click', invokeCopy);

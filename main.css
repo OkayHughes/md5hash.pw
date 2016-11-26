@@ -29,3 +29,6 @@ button:active { color: #777; }
     color: white;
     padding: 0;
 }
+
+#copied { opacity: 0; font-size: 24px; transition: opacity 1s; }
+#copied.show { opacity: 1; transition: opacity 0.5s; }

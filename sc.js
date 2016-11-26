@@ -209,11 +209,11 @@ function modifyCopy(e) {
     e.preventDefault();
 
     // Display a notification that it was copied
-    var copied = document.getElementById('copied');
+    var copied = document.body;
     copied.className = 'show';
     window.setTimeout(function() {
         copied.className = '';
-    }, 1000);
+    }, 100);
 }
 
 document.addEventListener('click', invokeCopy);

@@ -201,6 +201,7 @@ var MD5 = function (string) {
 
 function invokeCopy() {
     document.execCommand('copy');
+    console.log("garp");
 }
 
 function modifyCopy(e) {
@@ -216,5 +217,7 @@ function modifyCopy(e) {
     }, 100);
 }
 
-document.addEventListener('click', invokeCopy);
+window.onload = function () {
+document.getElementById('butt').addEventListener('click', invokeCopy);
 document.addEventListener('copy', modifyCopy);
+};

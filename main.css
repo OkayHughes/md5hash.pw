@@ -21,10 +21,8 @@ body.show{
 
 input, button {  font: inherit;  }
 
-button {
-    border: none;
-    background: none;
-    color: #333;
+#butt:hover{
+    color:#222;
 }
 /*button:hover { color: #444; }*/
 

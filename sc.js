@@ -198,12 +198,16 @@ var MD5 = function (string) {
 
    	return temp.toLowerCase();
 }
+
 function invokeCopy() {
     document.execCommand('copy');
 }
+
 function modifyCopy(e) {
-    
-    e.clipboardData.setData('text/plain', MD5($('#pass').val()));
+    var pass = document.getElementById('pass');
+    e.clipboardData.setData('text/plain', MD5(pass.value));
     e.preventDefault();
 }
+
+document.addEventListener('click', invokeCopy);
 document.addEventListener('copy', modifyCopy);

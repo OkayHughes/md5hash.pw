@@ -198,12 +198,23 @@ var MD5 = function (string) {
 
    	return temp.toLowerCase();
 }
+
 function invokeCopy() {
     document.execCommand('copy');
 }
+
 function modifyCopy(e) {
-    
-    e.clipboardData.setData('text/plain', MD5($('#pass').val()));
+    var pass = document.getElementById('pass');
+    e.clipboardData.setData('text/plain', MD5(pass.value));
     e.preventDefault();
+
+    // Display a notification that it was copied
+    var copied = document.getElementById('copied');
+    copied.className = 'show';
+    window.setTimeout(function() {
+        copied.className = '';
+    }, 1000);
 }
+
+document.addEventListener('click', invokeCopy);
 document.addEventListener('copy', modifyCopy);

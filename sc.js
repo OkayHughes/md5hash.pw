@@ -1,3 +1,40 @@
+function process(hash){
+  return length(exclamation(setcase(hash)));
+}
+
+function setcase(hash){
+  var val = document.getElementById("case").getAttribute("value");
+  switch (val){
+    case "a":
+      return hash.toLowerCase();
+      break;
+    case "A":
+      return hash.toUpperCase();
+      break;
+    case "Aa":
+      hash = hash.toLowerCase();
+      var char = hash.match(/[a-zA-Z]/i)[0];
+      var ind = hash.indexOf(char);
+      hash = hash.substring(0, ind) + char.toUpperCase() + hash.substring(ind+1, hash.length);
+      return hash;
+  }
+}
+
+function exclamation(hash){
+  var val = document.getElementById("!").getAttribute("value");
+  if (val == "true"){
+    hash = hash.substr(0, hash.length-1) + "!";
+    hash[-1] = "!";
+    return hash;
+  }
+  return hash;
+}
+
+function length(hash){
+  var val = parseInt(document.getElementById("length").getAttribute("value"));
+  return hash.slice(0, val);
+}
+
 var MD5 = function (string) {
 
    function RotateLeft(lValue, iShiftBits) {
@@ -196,12 +233,70 @@ var MD5 = function (string) {
 
    	var temp = WordToHex(a)+WordToHex(b)+WordToHex(c)+WordToHex(d);
 
-   	return temp.toLowerCase();
+
+   	return process(temp.toLowerCase());
 }
+
+function fecalHash(){
+
+  var schloop = document.getElementById("schloop");
+  if (schloop){
+    var pass = document.getElementById('pass').value;
+    morrisdangerfield = MD5(pass)
+    schloop.value = morrisdangerfield;
+
+    schloop.style.fontSize = Math.round((-5/3 * morrisdangerfield.length) + 250/3).toString() + "pt";
+    console.log(morrisdangerfield.length);
+    console.log(schloop.style.fontSize);
+  }
+  
+}
+
+
+var vis = false;
+var plus = true;
+function toggleOptions(){
+  vis = !vis;
+  var garbage = vis ? "flex" : "none";
+  document.getElementById("options").style.display = garbage;
+  plus = !plus;
+  var char = plus ? "+" : "-";
+  document.getElementById("plus").innerHTML = char;
+}
+
+function cycleOption(id){
+  var element = document.getElementById(id);
+  var values = element.getAttribute("values").split(",");
+  var index = (values.indexOf(element.getAttribute("value")) + 1) % values.length;
+  element.innerHTML = values[index];
+  element.setAttribute("value", values[index]);
+  fecalHash();
+
+  //<div class="flex" id="case" values="a,A,Aa" value="a">a</div>
+}
+
+function toggleOption(id){
+  var element = document.getElementById(id);
+  var value = element.getAttribute("value") == "true";
+  element.setAttribute("value", (!value).toString());
+  element.classList.remove(value.toString());
+  element.classList.add((!value).toString());
+  fecalHash();
+
+}
+var html = '<div id="schloop-container"><input class="field" id="schloop" style="height:100%;" type="text" spellcheck="false"></div>';
+var original = "Copy";
+var schlooped = false;
+function schloop(){
+  schlooped = !schlooped;
+  var element = document.getElementById("butt");
+  element.innerHTML = schlooped ? html : original;
+  fecalHash();
+}
+
 
 function invokeCopy() {
     document.execCommand('copy');
-    console.log("garp");
 }
 
 function modifyCopy(e) {
@@ -220,4 +315,9 @@ function modifyCopy(e) {
 window.onload = function () {
 document.getElementById('butt').addEventListener('click', invokeCopy);
 document.addEventListener('copy', modifyCopy);
+
+document.addEventListener("keydown", fecalHash, false);
 };
+document.addEventListener("DOMContentLoaded", function(event) { 
+    document.getElementById("options").style.display = "none";
+});

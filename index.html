@@ -9,10 +9,31 @@
 </head>
 <body>
     <div id="copied" >Copied!</div>
-  <div id="black1">Password</div>
-  <input id="pass" type="password" value="Hello World" >
-  <!--  <button id="butt">Copy</button> -->
-  <div id="butt">Copy</div>
+  <div id="heading">
+      <div>
+      Password
+      </div>
+  </div>
+  <div id="gray-container">
+    <div id="pass-container">
+      <input class="field" id="pass" type="text" value="Hello World" spellcheck="false">
+    </div>
+    <div id="options" >
+      <div class="option" id="case" values="a,A,Aa" value="a" onclick="cycleOption('case');">a</div>
+      <div class="option false" id="!" value="false" onclick="toggleOption('!');">!</div>
+      <div class="option" id="length" values="32,8,12,16,20" value="32" onclick="cycleOption('length')">32</div>
+    </div>
+  </div>
+
+  <div id="row">
+      <div id="mobile" onclick="schloop();">■</div>
+      <div id="butt">
+          <div>
+          Copy
+          </div>
+      </div>
+      <div id="plus" onclick="toggleOptions();">+</div>
+  </div>
   <div id="copied">Copied!</div>
 </body>
 </html>

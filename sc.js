@@ -1,5 +1,5 @@
 function process(hash){
-  return length(exclamation(setcase(hash)));
+  return exclamation(setcase(length(hash)));
 }
 
 function setcase(hash){

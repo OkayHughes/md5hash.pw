@@ -131,12 +131,6 @@ input, button {  font: inherit;  }
 }
 /*button:hover { color: #444; }*/
 
-
-
-
-
-
-
 #copied {
     opacity:0;
     font-size:40pt;
@@ -145,14 +139,6 @@ input, button {  font: inherit;  }
     top:70px;
     left:70px;
 }
-
-
-
-
-
-
-
-
 
 
 .flex{
